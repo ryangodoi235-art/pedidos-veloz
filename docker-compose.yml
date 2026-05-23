@@ -1,0 +1,27 @@
+```yaml
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: pedidos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5432:5432"
+
+  api-gateway:
+    build: ./services/api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      PEDIDOS_SERVICE_URL: http://pedidos-service:8081
+
+  pedidos-service:
+    build: ./services/pedidos
+    ports:
+      - "8081:8081"
+    environment:
+      DB_HOST: postgres
+      DB_PASSWORD: postgres123
