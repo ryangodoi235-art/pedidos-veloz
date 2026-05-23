@@ -1,2 +1,8 @@
-# pedidos-veloz
-Plataforma de pedidos em microsserviços com Docker, Kubernetes e CI/CD
+# Pedidos Veloz
+
+Projeto de microsserviços com Docker e Kubernetes
+
+## Como executar
+
+```bash
+docker-compose up -d
